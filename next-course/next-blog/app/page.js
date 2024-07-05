@@ -4,23 +4,13 @@ import Hero from "../components/home-page/Hero/hero";
 import { getFeaturedPosts } from "@/lib/posts-util";
 import FeaturedPosts from "../components/home-page/FeaturedPosts/featured-posts";
 
-export default function HomePage(props) {
+export default async function HomePage(props) {
+  const featuredPosts = getFeaturedPosts();
 
   return (
     <Fragment>
       <Hero />
-      <FeaturedPosts posts={props.posts} />
+      <FeaturedPosts posts={featuredPosts} />
     </Fragment>
   );
-}
-
-
-export function getMarkdownFile() { 
-  const featuredPosts = getFeaturedPosts()
-
-  return {
-    props: {
-      posts: featuredPosts
-    }
-  }
 }
