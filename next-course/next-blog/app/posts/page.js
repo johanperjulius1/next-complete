@@ -3,7 +3,9 @@ import React from "react";
 import { getAllPosts } from "@/lib/posts-util";
 
 
+
 export default function AllPostsPage() {
-  return <AllPosts
+  const allPosts = getAllPosts();
+  return <AllPosts posts={allPosts}
    />;
 }

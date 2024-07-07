@@ -48,3 +48,12 @@ properties.forEach(prop => {
 // Creating Objects with Dynamic Keys:
 // Useful when creating objects where the key names are determined at runtime.
 
+function outerFunction () {
+  var outerVariable = 'I am outside'
+
+  return function innerFunction () {
+    console.log(outerVariable)
+  }
+}
+
+const myClosure = outerFunction()
