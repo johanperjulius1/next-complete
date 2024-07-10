@@ -2,7 +2,7 @@ import PostContent from '@/components/posts/single-post/post-content'
 import { getPostData, getPostsFiles } from '@/lib/posts-util';
 import React from 'react'
 
-export default async function SinglePostsPage({ params }) {
+export default function SinglePostsPage({ params }) {
   const { slug } = params;
   
   console.log("Received slug:", slug); // Add this line
@@ -12,7 +12,7 @@ export default async function SinglePostsPage({ params }) {
   }
   
   try {
-    const postData = await getPostData(`${slug}.md`);
+    const postData =  getPostData(`${slug}.md`);
     
     console.log("Post data:", postData); // Add this line
     

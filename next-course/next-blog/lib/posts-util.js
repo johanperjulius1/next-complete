@@ -3,11 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "blogPosts");
+console.log("hello from postsDirectory:", postsDirectory); // Add this line
 
 export function getPostsFiles() {
   console.log("getPostsFiles called"); 
   return fs.readdirSync(postsDirectory);
 }
+
+
 export function getPostData(postIdentifier) {
   const slug = postIdentifier.replace(/\.md$/, "");
 
