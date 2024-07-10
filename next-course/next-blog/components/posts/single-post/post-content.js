@@ -1,23 +1,23 @@
+'use client'
 import ReactMarkdown from "react-markdown";
 import PostHeader from "./post-header";
-
 import styles from "./post-content.module.css";
 
-const DUMMY_POST = {
-  slug: "getting-started-with-nextjs",
-  title: "Getting Started with Next.js",
-  image: "getting-started-nextjs.png",
-  date: "2022-02-10",
-  content: "# This is a first post",
-};
+export default function PostContent(props) {
+  const { post } = props;
+  
+  console.log("Received post in PostContent:", post); // Add this line
+  
+  if (!post || !post.slug || !post.image) {
+    return <div>Error: Invalid post data</div>;
+  }
 
-export default function PostContent() {
-  const imagePath = `/images/posts/${DUMMY_POST.slug}/${DUMMY_POST.image}`;
+  const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
   return (
     <article className={styles.content}>
-      <PostHeader title={DUMMY_POST.title} image={imagePath} />
-      <ReactMarkdown>{DUMMY_POST.content}</ReactMarkdown>
+      <PostHeader title={post.title} image={imagePath} />
+      <ReactMarkdown>{post.content}</ReactMarkdown>
     </article>
   );
 }
