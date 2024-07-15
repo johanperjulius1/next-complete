@@ -5,7 +5,7 @@ import matter from "gray-matter";
 const postsDirectory = path.join(process.cwd(), "blogPosts");
 
 export function getPostsFiles() {
-  console.log("getPostsFiles called"); 
+  // Returns an array of file names in the directory
   return fs.readdirSync(postsDirectory);
 }
 
