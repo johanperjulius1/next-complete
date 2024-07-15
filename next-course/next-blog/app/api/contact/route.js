@@ -1,6 +1,8 @@
-function handler(req, res) {
-  if (req.method === "POST") {
-    const { email, name, message } = req.body;
+// /app/api/contact/route.js
+
+export async function POST(req) {
+    const { email, name, message } = await req.json();
+  
     if (
       !email ||
       !email.includes("@") ||
@@ -8,18 +10,26 @@ function handler(req, res) {
       !message ||
       message.trim() === ""
     ) {
-      res.status(422).json({ message: "Invalid input." });
-      return;
+      return new Response(JSON.stringify({ message: "Invalid input." }), {
+        status: 422,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     }
-
+  
     const newMessage = {
       email,
       name,
       message,
     };
     console.log(newMessage);
+  
+    return new Response(JSON.stringify({ message: "Successfully stored message!" }), {
+      status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
-  res.status(201).json({ message: "Successfully stored message!", message: newMessage });
-}
-
-export default handler;
+  
